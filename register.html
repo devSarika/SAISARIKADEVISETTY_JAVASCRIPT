@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <title>Registration Form</title>
+</head>
+
+<body>
+    <div class="container"><br>
+
+        <div class="col-lg-6 m-auto d-block">
+            <h1 class="text-white text-center font-weight-bold bg-success" style="font-size: 55px;"> Registration Form
+            </h1>
+            <form action="#" onsubmit=" validation()" class="bg-light">
+
+                <div class="form-group">
+                    <label for="user" class="font-weight-bold"> Username: </label>
+                    <input type="text" required name="user" class="form-control" id="user" autocomplete="off"
+                        onblur="checkName(this);">
+                    <span id="username" class="text-danger font-weight-bold"> </span>
+                </div>
+
+                <div class="form-group">
+                    <label class="font-weight-bold"> Password: </label>
+                    <input type="password" required name="pass" class="form-control" id="pass" autocomplete="off"
+                        onblur="checkPwd(this);">
+                    <span id="passwords" class="text-danger font-weight-bold"> </span>
+                </div>
+
+                <div class="form-group">
+                    <label class="font-weight-bold"> Confirm Password: </label>
+                    <input type="password" required name="conpass" class="form-control" id="conpass" autocomplete="off"
+                        onblur="checkConPass(this);">
+                    <span id="confrmpass" class="text-danger font-weight-bold"> </span>
+                </div>
+
+                <div class="form-group">
+                    <label class="font-weight-bold"> Mobile Number: </label>
+                    <input type="text" required name="mobile" class="form-control" id="mobileNumber" autocomplete="off"
+                        onblur="checkNumber(this);">
+                    <span id="mobileno" class="text-danger font-weight-bold"> </span>
+                </div>
+
+                <div class="form-group">
+                    <label class="font-weight-bold"> Email: </label>
+                    <input type="text" required name="email" class="form-control" id="emails" autocomplete="off"
+                        onblur="checkMail(this);">
+                    <span id="emailids" class="text-danger font-weight-bold"> </span>
+                </div>
+
+                <input style="justify-content: center;" type="submit" name="submit" value="submit"
+                    class="btn btn-success" autocomplete="off">
+
+
+            </form>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+
+    function checkName(user) {
+
+        if (user.value == "") {
+            document.getElementById('username').innerHTML = " ** Please fill the username field";
+
+        }
+        else if ((user.value.length <= 2) || (user.value.length > 20)) {
+            document.getElementById('username').innerHTML = " ** Username lenght must be between 2 and 20";
+
+        }
+        else {
+            document.getElementById('username').innerHTML = "";
+        }
+
+    }
+
+    function checkPwd(pass) {
+
+        if (pass.value == "") {
+            document.getElementById('passwords').innerHTML = " ** Please fill the password field";
+
+        }
+        else if ((pass.value.length <= 5) || (pass.length > 20)) {
+            document.getElementById('passwords').innerHTML = " ** Passwords lenght must be between  5 and 20";
+
+        }
+        else {
+            document.getElementById('passwords').innerHTML = "";
+        }
+
+
+    }
+    function checkConPass(confirmpass) {
+        var pass = document.getElementById('pass').value;
+        if (confirmpass.value == "") {
+            document.getElementById('confrmpass').innerHTML = " ** Please fill the password field";
+
+        }
+        else if (pass != confirmpass.value) {
+            document.getElementById('confrmpass').innerHTML = " ** Password does not match the confirm password";
+
+        }
+
+        else {
+            document.getElementById('confrmpass').innerHTML = "";
+        }
+    }
+    function checkMail(emails) {
+        if (emails.value == "") {
+            document.getElementById('emailids').innerHTML = " ** Please fill the email idx` field";
+
+        }
+        else if (emails.value.indexOf('@') <= 0) {
+            document.getElementById('emailids').innerHTML = " ** @ Invalid Position";
+
+        }
+
+        else if ((emails.value.charAt(emails.value.length - 4) != '.') && (emails.value.charAt(emails.value.length - 3) != '.')) {
+            document.getElementById('emailids').innerHTML = " ** . Invalid Position";
+
+        }
+        else {
+            document.getElementById('emailids').innerHTML = "";
+        }
+    }
+
+    function checkNumber(mobile){
+        if(mobile == ""){
+            document.getElementById('mobileno').innerHTML =" ** Please fill the mobile NUmber field";
+            return false;
+        }
+      else  if(isNaN(mobile.value)){
+            document.getElementById('mobileno').innerHTML =" ** user must write digits only not characters";
+            
+        }
+        else if(mobile.value.length!=10){
+            document.getElementById('mobileno').innerHTML =" ** Mobile Number must be 10 digits only";
+           
+        }
+        else{
+            document.getElementById('mobileno').innerHTML = "";
+        }
+
+    }
+
+   
+</script>
+
+</html>
